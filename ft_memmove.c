@@ -13,16 +13,29 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*src1;
-	char	*dst1;
+	signed char	in_decrement;
+	size_t		last;
+	size_t		current;
 
-	src1 = (char *)src;
-	dst1 = (char *)dst;
-	while (len)
+	if (dst != src)
 	{
-		dst1[len - 1] = src1[len - 1];
-		len--;
+		if (dst < src)
+		{
+			in_decrement = 1;
+			current = 0;
+			last = len;
+		}
+		else
+		{
+			in_decrement = -1;
+			current = len - 1;
+			last = -1;
+		}
+		while (current != last)
+		{
+			*((char *)dst + current) = *((char *)src + current);
+			current += in_decrement;
+		}
 	}
-	dst = (void *)dst1;
 	return (dst);
 }
