@@ -32,7 +32,7 @@ SRC =	ft_strnstr.c\
 		ft_calloc.c\
 		ft_substr.c\
 		ft_strjoin.c\
-		#ft_strtrim.c\
+		ft_strtrim.c\
 		# ft_split.c      \
 		# ft_putchar_fd.c \
 		# ft_itoa.c       \
