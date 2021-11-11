@@ -12,12 +12,19 @@
 
 #include "libft.h"
 
+static char	*get_memory(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[start + i] && i < len)
+		i++;
+	return ((char *)malloc(sizeof(char) * (i + 1)));
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
-	size_t	end;
-
-	end = len + start;
 	if (!s)
 		return (0);
 	if (start >= ft_strlen(s))
@@ -26,7 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		*sub = 0;
 		return (sub);
 	}
-	sub = (char *)malloc(sizeof(char) * (len + 1));
+	sub = get_memory(s, start, len);
 	if (sub == 0)
 		return (0);
 	ft_strlcpy(sub, (s + start), len + 1);
