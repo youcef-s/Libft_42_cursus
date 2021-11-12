@@ -6,7 +6,7 @@
 /*   By: ylabtaim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:48:04 by ylabtaim          #+#    #+#             */
-/*   Updated: 2021/11/10 17:40:25 by ylabtaim         ###   ########.fr       */
+/*   Updated: 2021/11/12 17:16:35 by ylabtaim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,20 @@ static int	word_count(char const *s, char c)
 	return (n);
 }
 
-static char	*ft_allocate(const char *s, size_t n)
+static char	*ft_allocate(char **strs, const char *s, size_t n)
 {
 	char	*copy;
 
 	copy = (char *)malloc(sizeof(char) * (n + 1));
 	if (!copy)
+	{
+		while ((*strs)--)
+			free(*strs);
+		free(strs);
 		return (0);
+	}
 	ft_strlcpy(copy, s, (n + 1));
 	return (copy);
-}
-
-static void	ft_free(char **str, int k)
-{
-	if (!str)
-	{
-		while (k)
-			free(str[k]);
-		free (str);
-	}
 }
 
 char	**ft_split(char const *s, char c)
@@ -74,8 +69,7 @@ char	**ft_split(char const *s, char c)
 		while (s[i] && s[i] != c)
 			i++;
 		if (i > j)
-			splited_strs[k++] = ft_allocate(s + j, i - j);
-		ft_free(splited_strs, k);
+			splited_strs[k++] = ft_allocate(splited_strs, s + j, i - j);
 	}
 	splited_strs[k] = 0;
 	return (splited_strs);

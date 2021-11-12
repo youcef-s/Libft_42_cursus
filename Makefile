@@ -1,12 +1,8 @@
 NAME = libft.a
 
-CC = gcc
-
 RM = rm -rf
 
 AR = ar rcs
-
-CFLAGS = -Wall -Wextra -Werror
 
 SRC =	ft_strnstr.c\
 		ft_strncmp.c\
@@ -38,6 +34,7 @@ SRC =	ft_strnstr.c\
 		ft_strjoin.c\
 		ft_strtrim.c\
 		ft_itoa.c\
+		ft_striteri.c\
 		ft_putchar_fd.c\
 		ft_strmapi.c\
 		ft_putchar_fd.c\
@@ -46,21 +43,30 @@ SRC =	ft_strnstr.c\
 		ft_putnbr_fd.c\
 		ft_split.c
 
+BONUS_SRC = ft_lstnew.c\
+			ft_lstadd_front.c\
+			ft_lstsize.c\
+			ft_lstlast.c\
+			ft_lstadd_back.c\
+			ft_lstdelone.c\
+			ft_lstclear.c\
+			ft_lstiter.c\
+			ft_lstmap.c
 
 OBJECTS = $(SRC:.c=.o)
 
-INCLUDES = libft.h \
+BONUS_OBJS = $(BONUS_SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(INCLUDES)
+$(NAME): $(OBJECTS)
 	$(AR) $(NAME) $(OBJECTS)
 
-%.o : %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+bonus: $(BONUS_OBJS) $(OBJECTS)
+	$(AR) $(NAME) $(OBJECTS) $(BONUS_OBJS)
 
 clean:
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS) $(BONUS_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)

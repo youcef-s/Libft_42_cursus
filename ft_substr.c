@@ -6,7 +6,7 @@
 /*   By: ylabtaim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:23:13 by ylabtaim          #+#    #+#             */
-/*   Updated: 2021/11/04 10:52:20 by ylabtaim         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:48:23 by ylabtaim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static char	*get_memory(char const *s, unsigned int start, size_t len)
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
+
 	if (!s)
 		return (0);
 	if (start >= ft_strlen(s))

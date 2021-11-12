@@ -6,26 +6,26 @@
 /*   By: ylabtaim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:47:23 by ylabtaim          #+#    #+#             */
-/*   Updated: 2021/11/09 21:00:03 by ylabtaim         ###   ########.fr       */
+/*   Updated: 2021/11/10 13:32:33 by ylabtaim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int m, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (m == -2147483648)
+	if (n == -2147483648)
 		ft_putstr_fd("-2147483648", fd);
-	else if (m < 0)
+	else if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-m, fd);
+		ft_putnbr_fd(-n, fd);
 	}
-	else if (m >= 10)
+	else if (n >= 10)
 	{
-		ft_putnbr_fd(m / 10 , fd);
-		ft_putchar_fd(m % 10 + '0', fd);
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
 	}
 	else
-		ft_putchar_fd(m + '0', fd);
+		ft_putchar_fd(n + '0', fd);
 }
