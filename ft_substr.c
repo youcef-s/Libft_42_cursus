@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char	*get_memory(char const *s, unsigned int start, size_t len)
+static char	*ft_allocate(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 
@@ -34,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		*sub = 0;
 		return (sub);
 	}
-	sub = get_memory(s, start, len);
+	sub = ft_allocate(s, start, len);
 	if (sub == 0)
 		return (0);
 	ft_strlcpy(sub, (s + start), len + 1);

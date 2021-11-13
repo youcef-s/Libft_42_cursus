@@ -40,15 +40,15 @@ static	char	*ft_allocate(char *string, long *n1, int *i)
 	return (string);
 }
 
-static	int	ft_numlen(int n1, int *i)
+static	int	ft_numlen(int n1, int i)
 {
 	while (n1)
 	{
 		n1 /= 10;
-		(*i)++;
+		i++;
 	}
-	(*i)++;
-	return (*i);
+	i++;
+	return (i);
 }
 
 char	*ft_itoa(int n)
@@ -61,7 +61,7 @@ char	*ft_itoa(int n)
 	string = 0;
 	n1 = n;
 	i = 1;
-	i = ft_numlen(n1, &i);
+	i = ft_numlen(n1, i);
 	string = ft_allocate(string, &n1, &i);
 	if (!ft_strncmp(string, "allocation failed", 17))
 		return (0);
